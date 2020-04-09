@@ -36,11 +36,11 @@ public class Server extends AbstractVerticle {
         router.route("/").handler(routingContext -> {
             routingContext.response().putHeader("content-type", "text/html").end("<html><body><h2>Fake Server</h2></body></html>");
         });
-        router.route("/optimize").handler(routingContext -> {
+        router.route("/optimize*").handler(routingContext -> {
             routingContext.response().putHeader("content-type", "application/json").end("{\"job_id\":\"" + UUID.randomUUID().toString() + "\"}");
         });
 
-        router.route("/solution").handler(routingContext -> {
+        router.route("/solution*").handler(routingContext -> {
             routingContext.response().putHeader("content-type", "application/json").end(jsonStr);
         });
 
