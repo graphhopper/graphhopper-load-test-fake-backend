@@ -34,14 +34,23 @@ public class Server extends AbstractVerticle {
 
         Router router = Router.router(vertx);
         router.route("/").handler(routingContext -> {
-            routingContext.response().putHeader("content-type", "text/html").end("<html><body><h2>Fake Server</h2></body></html>");
+            routingContext.response().
+                    putHeader("content-type", "text/html").
+                    end("<html><body><h2>Fake Server</h2></body></html>");
         });
         router.route("/optimize*").handler(routingContext -> {
-            routingContext.response().putHeader("content-type", "application/json").end("{\"job_id\":\"" + UUID.randomUUID().toString() + "\"}");
+            // to avoid parsing the JSON put the jobId in the header
+            String jobId = UUID.randomUUID().toString();
+            routingContext.response().
+                    putHeader("content-type", "application/json").
+                    putHeader("X-GH-JobId", jobId).
+                    end("{\"job_id\":\"" + jobId + "\"}");
         });
 
         router.route("/solution*").handler(routingContext -> {
-            routingContext.response().putHeader("content-type", "application/json").end(jsonStr);
+            routingContext.response().
+                    putHeader("content-type", "application/json").
+                    end(jsonStr);
         });
 
         int port = config().getInteger("http.port", 8080);
