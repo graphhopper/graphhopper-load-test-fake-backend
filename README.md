@@ -16,6 +16,8 @@ java -jar target/fake-server.jar [-conf vertx.json]
 
 ## Example Configuration
 
+Default port 8080 can be overwritten in the configuration:
+
 ```json
 {
   "http.port" : 4321
