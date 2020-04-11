@@ -1,10 +1,31 @@
-# Fake backend server
-
-This repository is for supplying a fake routing or VRP server for load testing purposes.
+This server mocks some of the back end servers to load test our load balancer without the need for expensive backend servers.
+We have two implementations currently: Java and Node.js.
 
 ## Java
 
-To be added...
+Currently only the async vrp endpoint is mocked: https://docs.graphhopper.com/#operation/asyncVRP
+
+### Build
+
+```
+mvn clean package
+```
+
+## Run
+
+```bash
+java -jar target/fake-server.jar [-conf vertx.json]
+```
+
+## Example Configuration
+
+Default port 8080 can be overwritten in the configuration:
+
+```json
+{
+  "http.port" : 4321
+}
+```
 
 ## Node.js
 
