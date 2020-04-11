@@ -11,13 +11,13 @@ Currently only the async vrp endpoint is mocked: https://docs.graphhopper.com/#o
 mvn clean package
 ```
 
-## Run
+### Run
 
 ```bash
 java -jar target/fake-server.jar [-conf vertx.json]
 ```
 
-## Example Configuration
+### Example Configuration
 
 Default port 8080 can be overwritten in the configuration:
 
