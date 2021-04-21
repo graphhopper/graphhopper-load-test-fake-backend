@@ -1,0 +1,10 @@
+version: '3'
+services:
+
+  fake_server:
+    hostname: fake_server
+    container_name: fake_server
+    build:
+      context: .
+    ports:
+      - 8080:8080
