@@ -11,10 +11,22 @@ Currently only the async vrp endpoint is mocked: https://docs.graphhopper.com/#o
 mvn clean package
 ```
 
-### Run
+### Run with Java
 
 ```bash
 java -jar target/fake-server.jar [-conf vertx.json]
+```
+
+### Run with Docker
+
+```bash
+docker run -p 8080:8080 graphhopper/graphhopper-load-test-fake-backend
+```
+
+### Run with Docker Compose
+
+```bash
+docker-compose up
 ```
 
 ### Example Configuration
